@@ -287,7 +287,7 @@ def WCST_test():
         Updates and returns maximum output short-term component according to output activity itself.
         When the output is over 0.5, an action has been done and auto-activation is then decreased to avoid rapid constant neuron fire.
         """
-        alpha = 0.05 #low alpha to avoid not to take action
+        alpha = 0.4 #low alpha to avoid not to take action
 
         action = np.argmax(output_activity)
         if output_activity[action] >= 0.5:
@@ -416,8 +416,8 @@ def WCST_test():
     LTout_to_inhib = np.full(4, 6)
     LTinhib = 6
 
-    LTintention_to_error = np.full(4,5)
-    LTerror = 6
+    LTintention_to_error = np.full(4,5)#0 to lesion auto-evaluation
+    LTerror = 6 #3 to lesion reward else 6
     LTerr_to_conf = 4
 
     LTconf_to_ref = 3
@@ -431,6 +431,7 @@ def WCST_test():
     STmemory = np.full((4,4), 1)
 
     STmem_to_intention = np.zeros((4,12))
+    #STmem_to_intention = np.full((4,12),0.5) #to lesion rule coding network
     STintention = np.full((4,4), 1)
 
     STinhib_to_go = 1
@@ -601,7 +602,7 @@ def WCST_test():
         #WEIGHTS UPDATE
         #Short term and Long term updates
         STinput_to_mem = input_to_memSTupdt(STinput_to_mem, reflexion_activity)
-        STmem_to_intention = int_to_mem_STupdt(STmem_to_intention, rules_activity)
+        STmem_to_intention = int_to_mem_STupdt(STmem_to_intention, rules_activity) #comment to lesion rule clusters
         LTmem_to_intention = int_to_mem_LTupdt(LTmem_to_intention, STmem_to_intention, memory_activity, intention_activity, error_activity)
         STintention_to_output = int_to_out_STupdt(STintention_to_output, go_activity)
         STintention_to_error = int_to_err_STupdt(STintention_to_error, error_activity, intention_activity)
@@ -639,6 +640,7 @@ def WCST_test():
     #Statistics
     if t>=1:
 
+
         err = 0
         for i in range(0, len(rewards)):
             if rewards[i] == 1:
@@ -647,8 +649,9 @@ def WCST_test():
         #print("Accuracy : " + str(accuracy))
 
         t_crit_mean = np.mean(criterions)
-        #print("Speed learning : " + str(t_crit_mean))
-        
+        if len(criterions) == 0:
+            t_crit_mean = err
+        #print("Speed Learning: " + str(t_crit_mean))
     
         several_trials = 0
         single_trial = 0
@@ -670,6 +673,7 @@ def WCST_test():
         #print("Percentage of Perseveration errors : " + str(persev_percent))
         #print("Task switching number : " + str(nbTS))
         #print("Number of trials : " + str(len(trials)))
+        nb_trials = len(trials)
         #print("Number of loops : " + str(len(loop)))
     end = time.time()
     test_time = end-start
@@ -744,6 +748,6 @@ def WCST_test():
     true_rewards = None
     rewards = None
     reasoning_list = None
-    return t_crit_mean , single_trial_lr, persev_percent, nbTS, test_time
+    return nb_trials, t_crit_mean , single_trial_lr, persev_percent, nbTS, test_time
 
-t_crit_mean , single_trial_lr, persev_percent, nbTS, test_time = WCST_test()
+nb_trials, t_crit_mean , single_trial_lr, persev_percent, nbTS, test_time = WCST_test()
