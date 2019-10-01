@@ -10,6 +10,7 @@ Pauline Bock - Mnemosyne Team (INRIA)
 from DehaeneChangeux import WCST_test
 import numpy as np 
 import time
+import os
 
 speed_lr_total = []
 single_trial_lr_total = []
@@ -17,18 +18,30 @@ perseveration_total = []
 nbTS_total = []
 time_total = []
 trials_total = []
+nb_test=0
+
+#save activities plot
+path = "./activitiesPlot"
+try:
+    if not os.path.exists(path):
+        os.mkdir(path)
+except OSError:
+    print ("Creation of the directory %s failed" % path)
+else:
+    print ("Successfully created the directory %s " % path)
 
 start_stat = time.time()
 
 for t in range(0, 500):
     print("trial " + str(t))
-    nb_trials, speed_lr, single_trial_lr, perseveration, nbTS, test_time = WCST_test()
+    nb_trials, speed_lr, single_trial_lr, perseveration, nbTS, test_time = WCST_test(nb_test, path)
     speed_lr_total.append(speed_lr)
     single_trial_lr_total.append(single_trial_lr)
     perseveration_total.append(perseveration)
     nbTS_total.append(nbTS)
     time_total.append(test_time)
     trials_total.append(nb_trials)
+    nb_test += 1
 
 end_stat = time.time()
 
@@ -49,8 +62,3 @@ print("nbTS mean: " + str(nbTS_mean))
 print("nb trials mean: " + str(trials_mean))
 print("Mean time: " + str(time_mean))
 print("Stat time: " + str(time_stat))
-
-f = open("LesionedReward2.txt", "w")
-text = "Speed: " + str(speed_lr_mean) + "\nSingle-trial learning: " + str(single_trial_lr_mean) + "\nperseveration: " + str(perseveration_mean) + "\nnbTS: " + str(nbTS_mean) + "\nnb trials: " + str(trials_mean)
-f.write(text)
-f.close()

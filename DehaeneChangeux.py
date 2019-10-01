@@ -15,6 +15,7 @@ Pauline Bock - Mnemosyne Team (INRIA)
 """
 
 import sys
+import os
 import time
 import numpy as np 
 from numpy import genfromtxt
@@ -26,7 +27,7 @@ np.set_printoptions(suppress=True)
 np.set_printoptions(linewidth=np.inf)
 from WCST import *
 
-def WCST_test():
+def WCST_test(nb_test, path):
     reasoning_list = []
     milner_list = []
 
@@ -740,8 +741,9 @@ def WCST_test():
     plt.plot(loop, trial_his, "k:",loop, inhib)
     plt.title("Inhibition")
     
-    plt.show()
-    plt.savefig("DehaeneNNPlot.png")
+    filename= str(path) + "/DehaeneNNPlot" + str(nb_test) + ".png"
+    plt.savefig(filename)
+    plt.close()
     
     #CLEAR COMPUTER MEMORY
     trials = None
@@ -750,4 +752,13 @@ def WCST_test():
     reasoning_list = None
     return nb_trials, t_crit_mean , single_trial_lr, persev_percent, nbTS, test_time
 
-nb_trials, t_crit_mean , single_trial_lr, persev_percent, nbTS, test_time = WCST_test()
+nb_test = 0
+#save activities plot
+path = "./activitiesPlot"
+try:
+    os.mkdir(path)
+except OSError:
+    print ("Creation of the directory %s failed" % path)
+else:
+    print ("Successfully created the directory %s " % path)
+nb_trials, t_crit_mean , single_trial_lr, persev_percent, nbTS, test_time = WCST_test(nb_test, path)
