@@ -12,3 +12,5 @@ python Statistics.py
 ```
 <br/>
 Numpy and Matplotlib libraries required.
+<br/>
+Creation of a directory named "activitiesPlot" where plots of activities are saved. Plots are rewrited when Statistics is relaunched.
