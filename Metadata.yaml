@@ -120,19 +120,19 @@ review:
   - url: 
 
 contributors:
-  - name:
-    orcid: 
+  - name: Olivia Guest
+    orcid: 0000-0002-1891-0972
     role: editor
-  - name:
-    orcid:
+  - name: Andrea Caso
+    orcid: 0000-0003-4904-3610
     role: reviewer
-  - name:
+  - name: Qihong Lu
     orcid:
     role: reviewer
 
 # This information will be provided by the editor
 dates:
-  - received:  November 1, 2018
+  - received:  September 5, 2019
   - accepted:
   - published: 
 
@@ -145,6 +145,6 @@ article:
 # This information will be provided by the editor
 journal:
   - name:   "ReScience C"
-  - issn:   2430-3658
-  - volume: 4
+  - issn:   
+  - volume: 5
   - issue:  1
