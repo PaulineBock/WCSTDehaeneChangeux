@@ -49,7 +49,8 @@ keywords: rescience c, rescience x
 #   see https://guides.github.com/activities/citable-code/
 code:
   - url: https://github.com/PaulineBock/WCSTDehaeneChangeux
-  - doi: 
+  - doi: 10.5281/zenodo.3553566
+
 
 # Date URL and DOI (optional if no data)
 data:
@@ -117,7 +118,7 @@ language: Python
 
 # For example, the URL of the GitHub issue where review actually occured
 review: 
-  - url: 
+  - url: https://github.com/ReScience/submissions/issues/7
 
 contributors:
   - name: Olivia Guest
