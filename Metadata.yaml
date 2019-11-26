@@ -140,8 +140,8 @@ dates:
 # This information will be provided by the editor
 article:
   - number: # Article number will be automatically assigned during publication
-  - doi:    # DOI from Zenodo
-  - url:    # Final PDF URL (Zenodo or rescience website?)
+  - doi:   10.5281/zenodo.3545905 # DOI from Zenodo
+  - url:   https://zenodo.org/record/3545905/files/ReScience_Dehaene.pdf # Final PDF URL (Zenodo or rescience website?)
 
 # This information will be provided by the editor
 journal:
