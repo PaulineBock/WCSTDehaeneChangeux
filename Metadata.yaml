@@ -59,10 +59,10 @@ data:
 
 # Information about the original article that has been replicated
 replication:
- - cite: # Dehaene, S., & Changeux, J. P. (1991). The Wisconsin Card Sorting Test: Theoretical analysis and modeling in a neuronal network. Cerebral cortex, 1(1), 62-79.
- - bib:  # dehaene1991wisconsin
- - url:  # https://academic.oup.com/cercor/article-abstract/1/1/62/408917
- - doi:  # https://doi.org/10.1093/cercor/1.1.62
+ - cite: Dehaene, S., & Changeux, J. P. (1991). The Wisconsin Card Sorting Test: Theoretical analysis and modeling in a neuronal network. Cerebral cortex, 1(1), 62-79.
+ - bib:  dehaene1991wisconsin
+ - url:  https://academic.oup.com/cercor/article-abstract/1/1/62/408917
+ - doi:  https://doi.org/10.1093/cercor/1.1.62
 
 # Don't forget to surround abstract with double quotes
 abstract: "Neuropsychologists commonly use the Wisconsin Card
@@ -134,8 +134,8 @@ contributors:
 # This information will be provided by the editor
 dates:
   - received:  September 5, 2019
-  - accepted:
-  - published: 
+  - accepted: October 8, 2019
+  - published: November 28, 2019
 
 # This information will be provided by the editor
 article:
